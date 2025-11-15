@@ -1,0 +1,44 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 20px;
+  background: #f9fafb;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Scroll container */
+.viewport {
+  width: 300px;
+  height: 400px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow-y: auto;
+  position: relative;
+  background: #fff;
+}
+
+/* Items container (we'll move it with transform later) */
+.items {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.item {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+}
+
+.item:nth-child(even) {
+  background: #f8f8f8;
+}

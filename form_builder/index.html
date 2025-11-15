@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Builder</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="title">Form Builder</h1>
+    <div class="file-handle">
+      <button id="download">Download Schema</button>
+      <input type="file" name="upload" id="upload" accept=".json" />
+    </div>
+
+    <div class="container">
+      <!-- Toolbox -->
+      <div class="toolbox">
+        <h3>Toolbox</h3>
+        <div class="tool-item" draggable="true" data-type="text">
+          Text Input
+        </div>
+        <div class="tool-item" draggable="true" data-type="checkbox">
+          Checkbox
+        </div>
+        <div class="tool-item" draggable="true" data-type="select">
+          Dropdown
+        </div>
+      </div>
+
+      <!-- Canvas -->
+      <div class="canvas" id="canvas">
+        <h3>Drop elements here</h3>
+      </div>
+    </div>
+
+    <!-- JSON Preview -->
+    <div class="json-preview">
+      <h3>Generated JSON Schema</h3>
+      <pre id="schema-output">[]</pre>
+    </div>
+
+    <!-- Preview Section -->
+    <div class="form-preview">
+      <h3>Form Preview</h3>
+      <button id="preview-btn">Preview Form</button>
+      <div id="preview-area"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
