@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reactive State System</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      .card {
+        background: white;
+        padding: 20px 30px;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 300px;
+      }
+      button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        background-color: royalblue;
+        color: white;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: dodgerblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Reactive Counter</h2>
+      <p id="count"></p>
+      <button id="increment">Increment</button>
+    </div>
+
+    <script type="module">
+      import { reactive } from "./src/reactive.js";
+      import { effect } from "./src/effect.js";
+      import { ref } from "./src/ref.js";
+      import { computed } from "./src/computed.js";
+
+      // Use our reactive system
+      const state = reactive({ count: 0 });
+
+      const countEl = document.getElementById("count");
+      const btn = document.getElementById("increment");
+
+      // Automatically updates when state changes
+      // effect(() => {
+      //   // console.log(
+      //   //   "%c Running effect: updating DOM",
+      //   //   "color: green; font-weight: bold;"
+      //   // );
+      //   countEl.textContent = `Count: ${state.count}`;
+      // });
+
+      // btn.addEventListener("click", () => {
+      //   // console.log("%c Button clicked", "color: red");
+      //   state.count++;
+      // });
+
+      // create an effect with scheduler
+      const runner = effect(
+        () => {
+          console.log("Count changed:", state.count);
+          countEl.textContent = `Count: ${state.count}`;
+        },
+        {
+          scheduler: (job) => {
+            console.log("Scheduled (not run immediately)");
+            setTimeout(job, 1000);
+          },
+        }
+      );
+
+      btn.addEventListener("click", () => {
+        // console.log("%c Button clicked", "color: red");
+        state.count++;
+      });
+
+      // Stop this effect after 3 seconds
+      setTimeout(() => {
+        console.log("Stopping effect");
+        runner.stop();
+        state.count++;
+      }, 3000);
+
+      // Create a ref with an initial value of 0
+      const number = ref(0);
+
+      // Register an effect that depends on number.value
+      // When number.value changes, this function will automatically run again
+      effect(() => {
+        console.log(
+          `%c[effect] Running effect -> number.value = ${number.value}`,
+          "color: green; font-weight: bold;"
+        );
+      });
+
+      // Then we increment the ref's value (this calls both getter and setter)
+      number.value++; // internally: get value -> compute 0+1 -> set value(1)
+
+      // Now assign a new value directly
+      number.value = 42;
+
+      // Create a computed
+      const double = computed(() => number.value * 2);
+
+      effect(() => {
+        console.log("Double: ", double.value);
+      });
+    </script>
+  </body>
+</html>
