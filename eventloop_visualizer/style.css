@@ -1,0 +1,94 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.box {
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.content {
+  min-height: 150px;
+  background: #eaeaea;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.controls {
+  margin-top: 20px;
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 8px;
+  border: none;
+  background: #0077ff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #005ad1;
+}
+
+.fade-slide {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fade-slide.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-slide.hide {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.queue-item {
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 5px;
+  background: #4b8df8;
+  border-radius: 6px;
+  transition: all 0.35s ease;
+}
+
+.stack-item {
+  display: block;
+  padding: 8px 12px;
+  margin: 4px 0;
+  background: #ef6868;
+  border-radius: 6px;
+  transition: all 0.35s ease;
+}
+
+.log-line {
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: 0.3s ease;
+}
+
+.log-line.show {
+  opacity: 1;
+  transform: translateX(0);
+}

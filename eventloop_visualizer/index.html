@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Loop Visualizer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>JavaScript Event Loop Visualizer</h1>
+
+    <div class="container">
+      <div class="box">
+        <h2>Call Stack</h2>
+        <div class="content" id="stack-content"></div>
+      </div>
+
+      <div class="box">
+        <h2>Web APIs</h2>
+        <div class="content" id="webapis-content"></div>
+      </div>
+
+      <div class="box">
+        <h2>Microtask Queue</h2>
+        <div class="content" id="microtask-content"></div>
+      </div>
+
+      <div class="box">
+        <h2>Macrotask Queue</h2>
+        <div class="content" id="macrotask-content"></div>
+      </div>
+
+      <div class="box">
+        <h2>Output / Logs</h2>
+        <div class="content" id="output-content"></div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="run-sync">Run Sync Code</button>
+      <button id="run-timeout">setTimeout</button>
+      <button id="run-promise">Promise.then</button>
+      <button id="run-event">Trigger Event Listener</button>
+    </div>
+
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
