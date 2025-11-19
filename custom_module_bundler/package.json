@@ -1,0 +1,18 @@
+{
+  "name": "custom_module_bundler",
+  "version": "1.0.0",
+  "description": "1. What is a Custom Module Bundler?\r A Module bundler is a tool that:\r     - Reads our JavaScript files.\r     - Finds all the import/require() dependencies.\r     - Builds a dependency graph.\r     - Combines everything into a single optimized output file.\r     - Browser can run that single file.\r In simple words:\r     It takes many JS files -> analyzes -> Bundles into a 1 final file.",
+  "main": "bundler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/parser": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "@babel/traverse": "^7.28.5"
+  }
+}
