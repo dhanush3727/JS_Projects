@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Excalidraw</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="toolbar">
+      <button id="undo-btn">Undo</button>
+      <button id="redo-btn">Redo</button>
+      <button id="save-btn">Save</button>
+      <button id="load-btn">Load</button>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <script src="commands/DrawCommand.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
